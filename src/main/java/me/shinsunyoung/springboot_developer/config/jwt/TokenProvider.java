@@ -40,7 +40,7 @@ public class TokenProvider {
                 .setExpiration(expiry)
                 .setSubject(user.getEmail())
                 .claim("id", user.getId())
-                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSercretKey())
+                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKey())
                 .compact();
     }
 
@@ -48,7 +48,7 @@ public class TokenProvider {
     public boolean validToken(String token) {
         try {
             Jwts.parser()
-                    .setSigningKey(jwtProperties.getSercretKey()) // 비밀값으로 복호화
+                    .setSigningKey(jwtProperties.getSecretKey()) // 비밀값으로 복호화
                     .parseClaimsJws(token);
 
             return true;
@@ -75,7 +75,7 @@ public class TokenProvider {
 
     private Claims getClaims(String token) {
         return Jwts.parser() // 클레임 조회
-                .setSigningKey(jwtProperties.getSercretKey())
+                .setSigningKey(jwtProperties.getSecretKey())
                 .parseClaimsJws(token)
                 .getBody();
     }

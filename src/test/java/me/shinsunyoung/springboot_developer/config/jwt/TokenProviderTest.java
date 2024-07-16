@@ -42,7 +42,7 @@ public class TokenProviderTest {
 
         // then
         Long userId = Jwts.parser()
-                .setSigningKey(jwtProperties.getSercretKey())
+                .setSigningKey(jwtProperties.getSecretKey())
                 .parseClaimsJws(token)
                 .getBody()
                 .get("id", Long.class);
@@ -71,7 +71,8 @@ public class TokenProviderTest {
     @Test
     void validToken_validToken() {
         // given
-        String token = JwtFactory.withDefaultValues().createToken(jwtProperties);
+        String token = JwtFactory.withDefaultValues().
+                createToken(jwtProperties);
 
         // when
         boolean result = tokenProvider.validToken(token);
