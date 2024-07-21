@@ -19,11 +19,11 @@ spring:
       client:
         registration:
           google:
-            client-id: 56188261812-pv6ibdlb41ob0ll14a4jmbvve66pcnob.apps.googleusercontent.com
-            client-secret: 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
+            client-id: test_id
+            client-secret: test_secret
             scope:
               - email
               - profile
 jwt:
   issuer: tmdgh784@naver.com
-  secret_key: study-springboot
+  secret_key: test_key
